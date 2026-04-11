@@ -1,0 +1,45 @@
+.notfound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.notfound-code {
+  font-size: 8rem;
+  font-weight: 800;
+  color: var(--accent);
+  text-shadow: var(--glow-strong);
+  line-height: 1;
+  opacity: 0.5;
+}
+
+.notfound h1 {
+  font-size: 2rem;
+  color: var(--text);
+}
+
+.notfound p {
+  color: var(--text-dim);
+}
+
+.notfound-btn {
+  margin-top: 1rem;
+  text-decoration: none;
+  background: rgba(0, 255, 127, 0.08);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  font-family: 'Recursive', monospace;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.notfound-btn:hover {
+  background: rgba(0, 255, 127, 0.15);
+  box-shadow: var(--glow);
+}
