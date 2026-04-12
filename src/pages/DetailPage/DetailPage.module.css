@@ -1,0 +1,42 @@
+.detailPage {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 400px;
+  margin-inline: auto;
+}
+
+.notFound {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 1.2rem;
+  padding: 2rem;
+}
+
+.backBtn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  font-family: 'Recursive', monospace;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+}
+
+.backBtn:hover {
+  color: var(--accent);
+  border-color: var(--accent-dark);
+}
+
+.detailCard {
+  flex-direction: row;
+  align-items: center;
+  cursor: default;
+}
+
+.detailCard img {
+  max-width: 150px;
+}

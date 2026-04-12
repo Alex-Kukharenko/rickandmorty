@@ -1,0 +1,37 @@
+.sortControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sortLabel {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.sortBtn {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 0.4rem 0.9rem;
+  border-radius: 4px;
+  font-family: 'Recursive', monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sortBtn:hover {
+  color: var(--accent);
+  border-color: var(--accent-dark);
+}
+
+.sortBtn.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(0, 255, 127, 0.08);
+  box-shadow: var(--glow);
+}

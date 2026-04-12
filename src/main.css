@@ -1,0 +1,9 @@
+/* index.css */
+@import url('https://fonts.googleapis.com/css2?family=Recursive:wght@400;600;800&display=swap');
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Recursive', monospace;
+  min-height: 100vh;
+}

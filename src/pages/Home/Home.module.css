@@ -5,13 +5,13 @@
   padding: 2rem 0;
 }
 
-.home-hero {
+.hero {
   text-align: center;
   position: relative;
   padding: 3rem 0;
 }
 
-.home-title {
+.title {
   font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -21,21 +21,21 @@
   line-height: 1;
 }
 
-.home-title span:first-child {
+.title span:first-child {
   color: var(--accent);
   text-shadow: var(--glow-strong);
 }
-.title-and {
+.and {
   color: var(--text-dim);
   font-size: 0.6em;
   align-self: center;
 }
-.home-title span:last-child {
+.title span:last-child {
   color: var(--yellow);
   text-shadow: 0 0 30px rgba(255, 230, 0, 0.5);
 }
 
-.home-sub {
+.subtitle {
   color: var(--text-dim);
   margin-top: 1rem;
   font-size: 0.9rem;
@@ -43,13 +43,13 @@
   text-transform: uppercase;
 }
 
-.home-cards {
+.cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
 }
 
-.home-card {
+.card {
   text-decoration: none;
   background: var(--bg2);
   border: 1px solid var(--border);
@@ -64,7 +64,7 @@
   transition: all 0.3s ease;
 }
 
-.home-card::before {
+.card::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -72,44 +72,44 @@
   transition: opacity 0.3s ease;
 }
 
-.card-characters::before {
+.characters::before {
   background: radial-gradient(circle at top left, rgba(0, 255, 127, 0.08), transparent 60%);
 }
-.card-locations::before {
+.locations::before {
   background: radial-gradient(circle at top left, rgba(0, 229, 255, 0.08), transparent 60%);
 }
-.card-episodes::before {
+.episodes::before {
   background: radial-gradient(circle at top left, rgba(255, 230, 0, 0.08), transparent 60%);
 }
 
-.home-card:hover::before {
+.card:hover::before {
   opacity: 1;
 }
 
-.home-card:hover {
+.card:hover {
   transform: translateY(-4px);
   border-color: rgba(0, 255, 127, 0.3);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
-.card-icon {
+.icon {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
 
-.home-card h2 {
+.card h2 {
   color: var(--accent);
   font-size: 1.2rem;
   font-weight: 800;
 }
 
-.home-card p {
+.card p {
   color: var(--text-dim);
   font-size: 0.85rem;
   line-height: 1.5;
 }
 
-.home-card:hover .card-arrow {
+.card:hover .card-arrow {
   transform: translateX(4px);
   color: var(--accent);
 }
