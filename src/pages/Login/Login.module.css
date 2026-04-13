@@ -1,0 +1,49 @@
+.loginPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.loginCard {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 460px;
+  overflow: hidden;
+}
+
+.loginTabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+
+.loginTab {
+  flex: 1;
+  padding: 1rem;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-family: 'Recursive', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.05em;
+}
+
+.loginTab:hover {
+  color: var(--accent);
+  background: rgba(0, 255, 127, 0.03);
+}
+
+.loginTab.active {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+  background: rgba(0, 255, 127, 0.05);
+}
+
+.loginContent {
+  padding: 2rem;
+}

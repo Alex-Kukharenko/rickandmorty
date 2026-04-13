@@ -1,0 +1,41 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.greeting {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.notAuth {
+  color: rgb(209, 85, 85);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  align-self: center;
+}
+
+.btn {
+  color: var(--text-dim);
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  font-family: 'Recursive', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  background: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(0, 255, 127, 0.05);
+  box-shadow: var(--glow);
+}
