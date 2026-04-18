@@ -1,0 +1,66 @@
+@keyframes shimmer {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 300px;
+  justify-content: center;
+  gap: 1rem;
+}
+.header {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  width: 100%;
+  column-gap: 750px;
+}
+
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.img {
+  width: 100%;
+  aspect-ratio: 1.38;
+  background: #2a2040;
+  animation: shimmer 1.5s infinite ease-in-out;
+}
+
+.body {
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.title,
+.line,
+.lineShort {
+  border-radius: 4px;
+  background: #2a2040;
+  animation: shimmer 1.5s infinite ease-in-out;
+}
+
+.title {
+  height: 12px;
+  width: 80%;
+}
+.line {
+  height: 8px;
+  width: 60%;
+}
+.lineShort {
+  height: 8px;
+  width: 40%;
+}

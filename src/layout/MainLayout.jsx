@@ -2,7 +2,9 @@ import { NavLink, Outlet } from 'react-router-dom'
 import { AuthStatus } from '../pages/components/AuthStatus/AuthStatus'
 import { useAuth } from '../context/authProvider'
 import styles from './MainLayout.module.css'
-
+import { ErrorBoundary } from '../pages/components/ErrorBoundary/ErrorBoundary'
+import { Skeleton } from '../pages/components/Skeleton/Skeleton'
+import { Suspense } from 'react'
 export function MainLayout() {
   const { user } = useAuth()
 
@@ -46,8 +48,13 @@ export function MainLayout() {
         </nav>
       </header>
       <main className={styles.main}>
-        <Outlet />
+        <ErrorBoundary>
+          <Suspense fallback={<Skeleton />}>
+            <Outlet />
+          </Suspense>
+        </ErrorBoundary>
       </main>
     </div>
   )
 }
+
