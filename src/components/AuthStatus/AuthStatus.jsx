@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../../../context/authProvider'
+import { useAuth } from '../../context/authProvider'
 import styles from './AuthStatus.module.css'
 
 export function AuthStatus() {
@@ -23,3 +23,4 @@ export function AuthStatus() {
     </div>
   )
 }
+

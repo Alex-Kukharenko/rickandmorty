@@ -20,13 +20,6 @@
   letter-spacing: 0.05em;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 300px;
-  justify-content: center;
-  gap: 1rem;
-}
-
 .card {
   text-decoration: none;
   background: var(--bg2);
@@ -86,23 +79,8 @@
   color: var(--text-dim);
 }
 
-.statusDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  display: inline-flex;
-}
-
-.error {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: var(--red);
-}
-
 .subTitle {
   display: flex;
   gap: 5px;
   align-items: center;
 }
-

@@ -1,13 +1,15 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { Card, statusColor } from '@components'
+import { PageHeader } from '@components'
+import { Spinner } from '@components'
+import { useFetch } from '@hooks'
+import { mergeUniqueById } from '@utils'
+import { selectDataRequest } from '@utils'
+import { sortByDate } from '@utils'
 import styles from './Characters.module.css'
-import { PageHeader } from '../components/PageHeader/PageHeader'
-import { Card, statusColor } from '../components/Card/Card'
-import { selectDataRequest } from '../../utils/selectors'
-import { sortByDate } from '../../utils/sort'
-import { mergeUniqueById } from '../../utils/merge'
-import { useFetch } from '../../hooks/useFetch'
-import { Spinner } from '../components/Spinner/Spinner'
+
+import { SimpleGrid, Badge, Group, Alert } from '@mantine/core'
 
 export function Characters() {
   const [page, setPage] = useState(1)
@@ -69,8 +71,14 @@ export function Characters() {
   return (
     <div className={styles.wrapper}>
       <PageHeader title="Персонажи" sort={sort} onSort={handleSort} />
-      {error && <div className={styles.error}>Ошибка загрузки</div>}
-      <div className={styles.grid}>
+
+      {error && (
+        <Alert color="red" title="Ошибка загрузки">
+          Не удалось загрузить персонажей. Попробуйте позже.
+        </Alert>
+      )}
+
+      <SimpleGrid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="md">
         {sorted.map((char, index) => (
           <Card
             key={char.id}
@@ -81,19 +89,19 @@ export function Characters() {
             subtitle={<p>Пол: {char.gender}</p>}
             meta={
               <>
-                <div className={styles.subTitle}>
-                  <span className={`${styles.statusDot} ${statusColor(char.status)}`} />
-                  <p>{char.status}</p>
-                </div>
+                <Group gap={6}>
+                  <Badge color={statusColor(char.status)} size="lg" variant="dot">
+                    {char.status}
+                  </Badge>
+                </Group>
                 <p>Вид: {char.species}</p>
                 {char.type && <p>Тип: {char.type}</p>}
               </>
             }
           />
         ))}
-      </div>
+      </SimpleGrid>
       {loading && <Spinner />}
     </div>
   )
 }
-

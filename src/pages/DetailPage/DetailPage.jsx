@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { Card } from '../components/Card/Card'
+import { Card } from '@components'
 import styles from './DetailPage.module.css'
 
 export function DetailPage({ card, notFoundText = 'Не найдено' }) {
@@ -16,3 +16,4 @@ export function DetailPage({ card, notFoundText = 'Не найдено' }) {
     </div>
   )
 }
+

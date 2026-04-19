@@ -1,10 +1,9 @@
-// pages/Login/Login.jsx
 import { useState } from 'react'
-import { Signin } from '../Signin/Signin'
-import { Signup } from '../Signup/Signup'
-import styles from './Login.module.css'
-import { useAuth } from '../../context/authProvider'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { useAuth } from '../../context/authProvider'
+import { Signin } from '@components'
+import { Signup } from '@components'
+import styles from './Login.module.css'
 
 export function Login() {
   const [tab, setTab] = useState('signin')
@@ -56,3 +55,4 @@ export function Login() {
     </div>
   )
 }
+
