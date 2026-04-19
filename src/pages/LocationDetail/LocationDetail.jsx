@@ -1,10 +1,19 @@
 import { useParams } from 'react-router-dom'
-import locations from '../data/location.json'
-import { DetailPage } from './DetailPage/DetailPage'
+import { Spinner } from '@components'
+import { useFetch } from '@hooks'
+import { DetailPage } from '@pages'
+import { Alert } from '@mantine/core'
 
 export function LocationDetail() {
   const { id } = useParams()
-  const loc = locations.find((l) => l.id === Number(id))
+  const [loading, error, loc] = useFetch(
+    `https://rickandmortyapi.com/api/location/${id}`,
+    null,
+    (data) => data,
+  )
+
+  if (loading) return <Spinner />
+  if (error) return <Alert color="red" title="Ошибка загрузки" />
 
   return (
     <DetailPage

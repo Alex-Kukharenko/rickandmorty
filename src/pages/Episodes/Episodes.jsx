@@ -1,12 +1,13 @@
-import { useSearchParams } from 'react-router-dom'
-import styles from './Episodes.module.css'
-import { PageHeader } from '../components/PageHeader/PageHeader'
-import { Card } from '../components/Card/Card'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useFetch } from '../../hooks/useFetch'
-import { mergeUniqueById } from '../../utils/merge'
-import { sortByDate } from '../../utils/sort'
-import { selectDataRequest } from '../../utils/selectors'
+import { useSearchParams } from 'react-router-dom'
+import { Card } from '@components'
+import { PageHeader } from '@components'
+import { Spinner } from '@components'
+import { useFetch } from '@hooks'
+import { mergeUniqueById } from '@utils'
+import { selectDataRequest } from '@utils'
+import { sortByDate } from '@utils'
+import { SimpleGrid, Alert } from '@mantine/core'
 
 export function Episodes() {
   const [page, setPage] = useState(1)
@@ -31,7 +32,6 @@ export function Episodes() {
 
   useEffect(() => {
     if (!result) return
-
     setEps((prev) => {
       const merged = mergeUniqueById(prev, result)
       if (merged.length === 0) return prev
@@ -70,10 +70,15 @@ export function Episodes() {
     <div>
       <PageHeader title="Эпизоды" sort={sort} onSort={handleSort} />
 
-      <div className={styles.grid}>
+      {error && (
+        <Alert color="red" title="Ошибка загрузки" mb="md">
+          Не удалось загрузить эпизоды. Попробуйте позже.
+        </Alert>
+      )}
+
+      <SimpleGrid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="md">
         {sorted.map((ep, index) => (
           <Card
-            className={styles.epCard}
             key={ep.id}
             ref={sorted.length >= 5 && index === sorted.length - 5 ? lastNodeRef : undefined}
             to={`/episodes/${ep.id}`}
@@ -82,14 +87,15 @@ export function Episodes() {
             icon={'📺'}
             meta={
               <>
-                <p>Эпизод: {ep.episode} </p>
+                <p>Эпизод: {ep.episode}</p>
                 <p>Создано: {new Date(ep.created).toLocaleDateString('ru-RU')}</p>
               </>
             }
           />
         ))}
-      </div>
+      </SimpleGrid>
+
+      {loading && <Spinner />}
     </div>
   )
 }
-

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import styles from './Card.module.css'
 
 export const statusColor = (status) => {
-  if (status === 'Alive') return styles.alive
-  if (status === 'Dead') return styles.dead
-  return styles.unknown
+  if (status === 'Alive') return 'green'
+  if (status === 'Dead') return 'red'
+  return 'gray'
 }
 
 export const Card = forwardRef(
@@ -29,4 +29,3 @@ export const Card = forwardRef(
 )
 
 Card.displayName = 'Card'
-

@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import styles from './Locations.module.css'
-import { selectDataRequest } from '../../utils/selectors'
-import { PageHeader } from '../components/PageHeader/PageHeader'
-import { Card } from '../components/Card/Card'
-import { useFetch } from '../../hooks/useFetch'
-import { Spinner } from '../components/Spinner/Spinner'
-import { mergeUniqueById } from '../../utils/merge'
-import { sortByDate } from '../../utils/sort'
+import { Card } from '@components'
+import { PageHeader } from '@components'
+import { useFetch } from '@hooks'
+import { mergeUniqueById } from '@utils'
+import { selectDataRequest } from '@utils'
+import { sortByDate } from '@utils'
+import { SimpleGrid, Alert } from '@mantine/core'
+import { Spinner } from '@/components'
 
 export function Locations() {
   const [page, setPage] = useState(1)
@@ -35,7 +35,6 @@ export function Locations() {
     setLocs((prev) => {
       const merged = mergeUniqueById(prev, result)
       if (merged.length === 0) return prev
-      console.log(merged.length)
       return merged
     })
   }, [result])
@@ -58,6 +57,7 @@ export function Locations() {
     },
     [hasMore],
   )
+
   const handleSort = useCallback(
     (value) => {
       setLocs([])
@@ -68,14 +68,18 @@ export function Locations() {
   )
 
   return (
-    <div className={styles.categoryPage}>
+    <div>
       <PageHeader title="Локации" sort={sort} onSort={handleSort} />
-      {error && <div className={styles.error}>Ошибка загрузки</div>}
 
-      <div className={styles.grid}>
+      {error && (
+        <Alert color="red" title="Ошибка загрузки" mb="md">
+          Не удалось загрузить локации. Попробуйте позже.
+        </Alert>
+      )}
+
+      <SimpleGrid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="md">
         {sorted.map((loc, index) => (
           <Card
-            className={styles.locCard}
             key={loc.id}
             ref={sorted.length >= 5 && index === sorted.length - 5 ? lastNodeRef : undefined}
             to={`/locations/${loc.id}`}
@@ -84,15 +88,15 @@ export function Locations() {
             icon={'🌍'}
             meta={
               <>
-                <p>Измерение: {loc.dimension} </p>
+                <p>Измерение: {loc.dimension}</p>
                 <p>Создано: {new Date(loc.created).toLocaleDateString('ru-RU')}</p>
               </>
             }
           />
         ))}
-      </div>
+      </SimpleGrid>
+
       {loading && <Spinner />}
     </div>
   )
 }
-
